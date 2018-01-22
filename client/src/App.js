@@ -1,13 +1,11 @@
 import React from "react";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+import Header from "./components/Header";
+import Search from "./pages/Search";
 
 const App = () =>
   <div>
-    <Nav />
-    <Books />
+    <Header />
+    <Search />
   </div>;
 
 export default App;
