@@ -13,8 +13,8 @@ export default {
     deleteArticle: function (id) {
         return axios.delete("/api/articles/" + id);
     },
-    // Saves a book to the database
-    // saveArticle: function (bookData) {
-    //     return axios.post("/api/articles", articleData);
-    // }
+    //Saves an article to the database
+    saveArticle: function (articleData) {
+        return axios.post("/api/articles", articleData);
+    }
 };
