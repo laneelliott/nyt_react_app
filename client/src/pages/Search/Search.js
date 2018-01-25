@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
-import { Input } from "../../components/Form";
+import API from "../../utils/API";
+import { Input, Dropdown } from "../../components/Form";
 import Panel from "../../components/Panel";
 
 class Search extends Component {
 
     state = {
-        searchTerm: ""
+        search: '',
+        results: '',
+        start: '',
+        end: ''
     };
 
     handleInputChange = event => {
@@ -14,7 +18,12 @@ class Search extends Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state.searchTerm)
+        console.log(this.state);
+    };
+
+    handleSearch = () => {
+        console.log("search clicked");
+        console.log(this.state.search);
     };
 
     render() {
@@ -22,12 +31,28 @@ class Search extends Component {
             <Panel title={"Search Parameters"}>
                 <div className="form">
                     <Input 
-                        label={"Search Term:"} 
-                        htmlFor={"search"} 
-                        id={"search-term"}
+                        value={this.state.search}
                         onChange={this.handleInputChange}
-                        value={this.state.searchTerm}
+                        name="search"
+                        htmlFor="search"
+                        title="Search Term:"
+                        placeholder="puppies"
                     />
+                    <Input
+                        value={this.state.start}
+                        onChange={this.handleInputChange}
+                        name="start"
+                        htmlFor="start"
+                        title="Start Year: (Optional)"
+                    />
+                    <Input
+                        value={this.state.end}
+                        onChange={this.handleInputChange}
+                        name="end"
+                        htmlFor="end"
+                        title="End Year: (Optional)"
+                    />
+                    <button type="submit" className="btn btn-default" id="run-search" onClick={this.handleSearch}><i className="fa fa-search"></i> Search</button>
                 </div>
             </Panel>
         );
